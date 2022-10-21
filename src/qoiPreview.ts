@@ -115,9 +115,44 @@ export class QoiPreview extends Disposable {
       },
     };
 
-    const head = `html head`;
-    const body = `html body`;
-    const tail = `html tail`;
+    const head = `<!DOCTYPE html>
+    <html dir="ltr" mozdisallowselectionprint>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src ${cspSource}; script-src 'unsafe-inline' ${cspSource}; style-src 'unsafe-inline' ${cspSource}; img-src blob: data: ${cspSource};">
+    <meta id="qoi-preview-config" data-config="${escapeAttribute(
+          JSON.stringify(settings)
+        )}">
+    <title>QOI viewer</title>
+    <script src="${resolveAsUri('htmlqoi.min.js')}"></script>
+    </head>`;
+    const body = `<body>
+    <div id="imgContainer">
+    </body>`;
+    const tail = ['</html>'].join('\n');
+
+    /*
+    <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Quickstart</title>
+        <!-- add the script to your HTML -->
+        <script src="https://cdn.jsdelivr.net/gh/zeozeozeo/htmlqoi/dist/htmlqoi.min.js"></script>
+    </head>
+    <body>
+        <!-- you're done! now you can use QOI images in your HTML -->
+        <!-- also works with favicons! -->
+        <img
+            src="https://cdn.jsdelivr.net/gh/zeozeozeo/htmlqoi/demo/static/qoi_logo.qoi"
+        />
+    </body>
+</html>
+    */
+
+
 
     return head + body + tail;
   }
