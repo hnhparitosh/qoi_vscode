@@ -38,7 +38,7 @@ export class QoiCustomProvider implements vscode.CustomReadonlyEditorProvider {
     });
   }
 
-  public get activePreview(): QoiPreview {
+  public get activePreview(): QoiPreview { // add undefined here
     return this._activePreview;
   }
 
