@@ -131,6 +131,7 @@ export class QoiPreview extends Disposable {
     </head>`;
     const body = `<body>
     <div id="imgContainer">
+    <p>Hello</p>
     </body>`;
     const tail = ['</html>'].join('\n');
 
